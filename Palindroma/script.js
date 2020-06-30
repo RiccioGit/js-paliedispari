@@ -9,26 +9,48 @@ var word = prompt("Scrivi una parola!");
 
 console.log("La tua parola è: " + word);
 
-var reverseWord = reverseFun(word);
+var palindrome = "";
 
-console.log("Parola invertita: " + reverseWord);
+for (var i = word.length - 1; i >= 0; i--) {
+  palindrome +=word[i];
+}
 
-//  Confrontare
-
-if (word == reverseWord) {
+if (palindrome == word) {
   console.log("La tua parola è palindroma");
 } else {
   console.log("Eh no, questa NON è palindroma");
 }
 
-// Funzione
+
+// *_*_*_*_ PROCEDIMENTO IN CASO DI FUNZIONI (correzione in classe): _*_*_*_*
 
 function reverseFun(word) {
 
-  var wordControl = "";
+  var reversed = "";
 
-  for (var i = word.lenght-1; i >= 0; i--) {
-    wordControl += word[i];
+  for (var i = word.length - 1; i >= 0; i--) {
+    palindrome +=word[i];
   }
-  return wordControl;
+
+  return reversed;
+}
+
+// poi anzichè il procedimento scritto sopra devi richiamare la funzione in questo modo:
+
+var reverseWord = reverseFun(word);
+
+// creiamo un altra funzione
+
+function isPalindrome(word) {
+  if (reverseWord == word) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+if (isPalindrome(word) == true) {
+  console.log("Palindroma");
+} else {
+  console.log("NON palindroma");
 }

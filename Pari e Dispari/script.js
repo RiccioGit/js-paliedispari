@@ -7,7 +7,9 @@ Dichiariamo chi ha vinto.*/
 
 // RICHIESTE ALL'UTENTE
 
-var userChoose = prompt("Fai la tua scelta: Pari o Dispari?");
+do {
+  var userChoose = prompt("Fai la tua scelta: Pari o Dispari?");
+} while (userChoose != "pari" && userChoose != "dispari");
 
 var userNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
 
@@ -15,10 +17,40 @@ console.log(userNumber);
 
 // NUMERO CPU e SOMMA
 
-var cpuNumber = //QUA INSERISCO UNA FUNZIONE!!
+var cpuNumber = getCpuNumber (1, 5);
+
+function getCpuNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 console.log(cpuNumber);
 
-var sumNumber = userNumber + cpuNumber;
+var finalNumber = userNumber + cpuNumber;
 
-console.log(sumNumber);
+console.log(finalNumber);
+
+console.log(isEven(finalNumber)); // abbiamo inserito la funzione qua
+
+// Dichiarare chi ha vinto
+
+if (isEven(finalNumber) == true) {
+  var temp = "pari"
+} else {
+  var temp = "dispari"
+}
+
+if (temp == userChoose) {
+  console.log("Hai vinto");
+} else {
+  console.log("Hai perso");
+}
+
+// Con funzione e modulo capiamo se è pari o dispari
+
+function isEven(num) {
+  if (num % 2 == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
